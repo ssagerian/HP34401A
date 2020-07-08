@@ -59,18 +59,20 @@ class HP34401A:
             exit(1)
         time.sleep(0.2)
         self.serial_port.write(b'*RST\x0D\x0A')
-        time.sleep(2)
+        time.sleep(1)
         self.serial_port.write(b':SYST:REMote\x0D\x0A')
-        self.serial_port.flush()
-        time.sleep(0.5)
+        time.sleep(0.1)
         self.serial_port.write(b':SYST:BEEP\x0D\x0A')
+        time.sleep(2.5)
 
     def route_terminals(self):
+        time.sleep(0.1)
         self.serial_port.write(b':ROUTE:TERMINALS?\x0D\x0A')
         s = self.serial_port.readline()
         print(s)
 
     def error_check(self):
+        time.sleep(0.1)
         self.serial_port.write(b':SYST:ERR?\x0D\x0A')
         time.sleep(1)
         s = self.serial_port.readline()
@@ -93,28 +95,28 @@ class HP34401A:
         self.serial_port.write(display)
 
     def set_mode_(self, mode):
-        # self.serial_port.write(b'*RST\x0D\x0A')
         if self.OperMode.AAC == mode:
-            b_mode = b':CONF:CURR:AC \x0D\x0A'
+            b_mode = b':CONF:CURR:AC DEF,DEF\x0D\x0A'
         elif self.OperMode.ADC == mode:
-            b_mode = b':CONF:CURR:DC \x0D\x0A'
+            b_mode = b':CONF:CURR:DC DEF,DEF\x0D\x0A'
         elif self.OperMode.VDC == mode:
-            b_mode = b':CONF:VOLT:DC \x0D\x0A'
+            b_mode = b':CONF:VOLT:DC DEF,DEF\x0D\x0A'
         elif self.OperMode.VAC == mode:
-            b_mode = b':CONF:VOLT:AC \x0D\x0A'
+            b_mode = b':CONF:VOLT:AC DEF,DEF\x0D\x0A'
         elif self.OperMode.FREQ == mode:
-            b_mode = b':CONF:FREQ \x0D\x0A'
+            b_mode = b':CONF:FREQ DEF,DEF\x0D\x0A'
         elif self.OperMode.RS2 == mode:
-            b_mode = b':CONF:RES\x0D\x0A'
+            b_mode = b':CONF:RES DEF,DEF\x0D\x0A'
         elif self.OperMode.RS4 == mode:
-            b_mode = b':CONF:FRES\x0D\x0A'
+            b_mode = b':CONF:FRES DEF,DEF\x0D\x0A'
         elif self.OperMode.CONT == mode:
-            b_mode = b':CONF:CONT\x0D\x0A'
+            b_mode = b':CONF:CONT \x0D\x0A'
         elif self.OperMode.PER == mode:
-            b_mode = b':CONF:PER\x0D\x0A'
+            b_mode = b':CONF:PER DEF,DEF\x0D\x0A'
         else:
-            b_mode = b':CONF:VOLT:DC\x0D\x0A'
+            b_mode = b':CONF:VOLT:DC DEF,DEF\x0D\x0A'
         self.serial_port.write(b_mode)
+        time.sleep(1.5)    # give DMM time to configure itself
 
     def set_sample_count(self, count):
         """
@@ -134,9 +136,8 @@ class HP34401A:
         single string, with each measurement separated by a commma, and terminated by a \n \r
         for example a two sample reading would look like .. b'-7.50000000E-09,+3.24000000E-08\r\n'
         """
+        time.sleep(0.1)
         self.serial_port.write(b':READ?\x0D\x0A')
-        stime = 0.6 * self.sample_count
-        time.sleep(stime)
         line = self.serial_port.readline()
         return line
 
@@ -149,10 +150,12 @@ class HP34401A:
         return True
 
     def dmm_id(self):
+        time.sleep(0.1)
         self.serial_port.write(b'*IDN?\x0D\x0A')
         print(self.serial_port.readline())
 
     def dmm_id_check(self):
+        time.sleep(0.1)
         self.serial_port.write(b'*IDN?\x0D\x0A')
         s = self.serial_port.readline()
         sstr = str(s, "utf=8")
