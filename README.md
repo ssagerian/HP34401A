@@ -23,7 +23,7 @@ To make the null modem you will need
 * some simple soldering skills
 
 Wire the two DB-9s as shown in the diagram. 
-Also see the image file of the null modem I made for myself ![null modem image](IMG_20200708_110650.jpg)
+Also see the image file of the null modem ![null modem image](IMG_20200708_110650.jpg)
 The power supply should have the postive voltage on pin 6 with ground on pin 5.
 Make sure you connect the DB-9 with the power adapter toward the HP34401A serial port, ie the HP34401A needs to have the DSR signal (high) to operate correctly.
 ## Current Files
