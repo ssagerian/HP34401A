@@ -7,6 +7,10 @@ The module needs _PySerial_  python modules
 ## Hardware
 The HP34401A utilizes dsr/dtr hardware handshaking to work correctly, for you this means you need to apply approximately 4VDC to 12VDC between Pins 6 (dsr), pin 1 (gnd).
 You can do this by using any wall wart with voltage output that is between those two ranges..
+The overall cabling consists of the following pieces 
+* usb to serial cable (from your pc)
+* a serial cable standard DCE to DTE
+* a null modem (which you make) wired as shown in ![cable_drawing](/cable_notes/nullmodemhookup.png)
 ## Current Files
 * __main__.py is the test driver
 * HP34401A.py is the class file
