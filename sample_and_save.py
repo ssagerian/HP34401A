@@ -47,6 +47,7 @@ sample_rate = eval(sys.argv[sample_rate_index]) - 1  # one second
 
 dmm = DMM.HP34401A(sys.argv[comport_index])
 
+dmm.set_display(file_name)
 mode = dmm.OperMode.ADC
 dmm.set_mode_(mode)
 dmm.set_sample_count(2)
