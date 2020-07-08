@@ -4,6 +4,10 @@ Python Class to support utilizing the HP34401A Digital multimeter
 This project came about when I needed to automate my HP34401A to read current over a number of days. I found a github project that supported the HP34401A but later discovered that the code didnt work well and was limited in its functionality. 
 ## Python Modules
 The module needs _PySerial_  python modules
+Drop the HP34401A.py module into your python modules folder
+Look at the __main__.py for example code, 
+create the class object, configure for the kind of measurement you desire to make, and call object.get_sample()
+
 ## Hardware
 The HP34401A utilizes dsr/dtr hardware handshaking to work correctly, for you this means you need to apply approximately 4VDC to 12VDC between Pins 6 (dsr), pin 1 (gnd).
 You can do this by using any wall wart with voltage output that is between those two ranges..
