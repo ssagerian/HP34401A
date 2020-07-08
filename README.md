@@ -17,8 +17,11 @@ The overall cabling consists of the following pieces
 * a null modem (which you make) wired as shown in ![cable_drawing](/cable_notes/nullmodemhookup.png)
 ### Hardware, the null modem
 To make the null modem you will need 
-2 female DB-9 connectors
-A wall wart (AC to DC power adapter) any voltage from 4 to 12 VDC output should work.
+* 2 female DB-9 connectors
+* A wall wart (AC to DC power adapter) any voltage from 4 to 12 VDC output should work.
+* some hook up wire
+* some simple soldering skills
+
 Wire the two DB-9s as shown in the diagram. 
 The power supply should have the postive voltage on pin 6 with ground on pin 5.
 Make sure you connect the DB-9 with the power adapter toward the HP34401A serial port, ie the HP34401A needs to have the DSR signal (high) to operate correctly.
