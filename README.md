@@ -4,6 +4,9 @@ Python Class to support utilizing the HP34401A Digital multimeter
 This project came about when I needed to automate my HP34401A to read current over a number of days. I found a github project that supported the HP34401A but later discovered that the code didnt work well and was limited in its functionality. 
 ## Capabilities
 * Class module so multiple instantiations possible
+* configure mode to take multiple samples per sample request
+* measurements returns as a string with commas separating individual measuresments
+  * example:  -0.34343430E-02,+1.74000000E+01\n\r
 * Currently supports the following measurement modes:
   * Current AC, DC
   * Voltage AC,DC
@@ -11,7 +14,7 @@ This project came about when I needed to automate my HP34401A to read current ov
   * Frequency
   * Period
   * Continuity 
-* display information to front panel display
+* display text information to front panel display
 additional features to be added long term
 
 ## Python Modules
