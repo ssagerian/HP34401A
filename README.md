@@ -15,6 +15,7 @@ This project came about when I needed to automate my HP34401A to read current ov
   * Period
   * Continuity 
 * display text information to front panel display
+
 additional features to be added long term
 
 ## Python Modules
